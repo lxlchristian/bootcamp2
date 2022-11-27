@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { Link } from "react-router-dom";
+
 
 class CardViewer extends React.Component {
     constructor(props) {
@@ -17,10 +19,11 @@ class CardViewer extends React.Component {
 
     render() {
         const card_data = this.props.cards[this.state.current_card];
+        var card_shown;
         if (this.state.is_front) {
-            var card_shown = card_data.front;
+            card_shown = card_data.front;
         } else {
-            var card_shown = card_data.back;
+            card_shown = card_data.back;
         }
 
         var prevButton = this.state.current_card === 0
@@ -40,7 +43,7 @@ class CardViewer extends React.Component {
                 </div>
                 <p>Card {this.state.current_card + 1}/{this.props.cards.length}</p>
                 <hr />
-                <button onClick={this.props.switchMode}>Go to card editor</button>
+                <Link to="/editor">Go to card editor</Link>
             </div>
         )
     }
